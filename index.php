@@ -9,7 +9,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-image: url('imagens/boby.jpg');
+            background-image: url('clinicamaisviver/imagens/boby.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
