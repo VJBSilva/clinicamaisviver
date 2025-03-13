@@ -9,7 +9,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-image: url('clinicamaisviver/imagens/boby.jpg');
+            background-image: url('imagens/boby.png'); /* Caminho da imagem atualizado */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -18,21 +18,21 @@
         }
 
         .btn-painel {
-    position: fixed; /* Alterado de absolute para fixed */
-    top: 20px; /* Distância do topo */
-    right: 20px; /* Distância da direita */
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 16px;
-    z-index: 1000; /* Garante que o botão fique acima de outros elementos */
-}
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            z-index: 1000;
+        }
 
-.btn-painel:hover {
-    background-color: #45a049;
-}
+        .btn-painel:hover {
+            background-color: #45a049;
+        }
 
         header {
             background-color: rgba(51, 51, 51, 0.8);
@@ -75,11 +75,11 @@
             width: 100%;
         }
 
-            .input-group div {
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-            }
+        .input-group div {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
 
         label {
             margin-bottom: 5px;
@@ -93,7 +93,7 @@
             border: 1px solid #ccc;
             width: 100%;
             box-sizing: border-box;
-            text-align: center; /* Centraliza o texto digitado */
+            text-align: center;
         }
 
         button {
@@ -107,9 +107,9 @@
             transition: background-color 0.3s;
         }
 
-            button:hover {
-                background-color: #555;
-            }
+        button:hover {
+            background-color: #555;
+        }
     </style>
 </head>
 <body>
