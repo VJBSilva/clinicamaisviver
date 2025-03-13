@@ -9,7 +9,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-image: url('imagens/boby.png'); /* Caminho da imagem atualizado*/
+            background-image: url('../imagens/boby.png'); /* Caminho da imagem atualizado*/
             background-size: cover; /* Faz a imagem cobrir todo o fundo */
             background-position: center; /* Centraliza a imagem */
             background-repeat: no-repeat; /* Evita repetição da imagem */
