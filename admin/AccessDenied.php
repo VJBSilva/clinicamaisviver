@@ -9,7 +9,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-image: url('https://drive.google.com/thumbnail?id=1JOA3hfLCbSw-OIpA3GkVRXoCSoZINioK'); /* Link direto da imagem */
+            background-image: url('imagens/boby.png'); /* Caminho da imagem atualizad
             background-size: cover; /* Faz a imagem cobrir todo o fundo */
             background-position: center; /* Centraliza a imagem */
             background-repeat: no-repeat; /* Evita repetição da imagem */
