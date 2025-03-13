@@ -65,7 +65,7 @@
 </head>
 <body>
     <header>
-        <a href="/ClinicaMaisViver" class="btn-inicio">Início</a>
+        <a href="/" class="btn-inicio">Início</a>
         <h1>Acesso Negado</h1>
     </header>
     <main>
