@@ -117,7 +117,7 @@
 </head>
 <body>
     <header>
-        <a href="/ClinicaMaisViver" class="btn-inicio">Início</a>
+        <a href="/" class="btn-inicio">Início</a>
         <h1>Painel de Controle</h1>
     </header>
     <main>
