@@ -166,6 +166,16 @@ $arquivos = array_filter(scandir($diretorio), function ($arquivo) {
             color: #721c24;
             border: 1px solid #f5c6cb;
         }
+
+        footer {
+            background-color: rgba(51, 51, 51, 0.8); /* Fundo semi-transparente */
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
     </style>
 </head>
 <body>
