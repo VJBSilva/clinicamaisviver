@@ -37,9 +37,13 @@
         header {
             background-color: rgba(51, 51, 51, 0.8);
             color: #fff;
-            padding: 10px 60px;
-            position: relative;
+            padding: 70px 20px 20px; /* Ajuste o padding-top para 70px */
             text-align: center;
+            position: relative;
+        }
+
+        header h1 {
+            margin: 0; /* Remove margens padrão */
         }
 
         main {
