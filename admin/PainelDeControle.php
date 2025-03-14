@@ -21,16 +21,19 @@
             background-color: rgba(51, 51, 51, 0.8); /* Fundo semi-transparente para melhor legibilidade */
             color: #fff;
             padding: 10px 20px; /* Adiciona padding nas laterais */
-            overflow: hidden; /* Limpa o float */
+            text-align: center; /* Centraliza o conteúdo do header */
+            position: relative; /* Permite posicionamento absoluto dos filhos */
         }
 
-            header h1 {
-                float: right; /* Alinha o título à direita */
-                margin: 0; /* Remove margens padrão */
-            }
+        header h1 {
+            margin: 0; /* Remove margens padrão */
+            display: inline-block; /* Permite centralização com text-align */
+        }
 
         .btn-inicio {
-            float: left; /* Alinha o botão à esquerda */
+            position: absolute; /* Posiciona o botão à esquerda */
+            top: 10px;
+            left: 20px;
             background-color: #4CAF50; /* Cor de fundo verde */
             color: white; /* Cor do texto */
             padding: 10px 20px; /* Espaçamento interno */
@@ -39,9 +42,9 @@
             font-size: 16px; /* Tamanho da fonte */
         }
 
-            .btn-inicio:hover {
-                background-color: #45a049; /* Efeito ao passar o mouse */
-            }
+        .btn-inicio:hover {
+            background-color: #45a049; /* Efeito ao passar o mouse */
+        }
 
         main {
             padding: 20px;
@@ -98,9 +101,9 @@
             border-radius: 5px;
         }
 
-            button:hover {
-                background-color: #555; /* Efeito ao passar o mouse */
-            }
+        button:hover {
+            background-color: #555; /* Efeito ao passar o mouse */
+        }
 
         .alert {
             margin-top: 20px;
