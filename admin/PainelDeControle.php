@@ -20,9 +20,9 @@
         header {
             background-color: rgba(51, 51, 51, 0.8); /* Fundo semi-transparente para melhor legibilidade */
             color: #fff;
-            padding: 10px 20px; /* Adiciona padding nas laterais */
-            text-align: center; /* Centraliza o conteúdo do header */
-            position: relative; /* Permite posicionamento absoluto dos filhos */
+            padding: 70px 20px 20px; /* Ajuste o padding-top para 70px */
+            text-align: center;
+            position: relative;
         }
 
         header h1 {
@@ -32,7 +32,7 @@
 
         .btn-inicio {
             position: absolute; /* Posiciona o botão à esquerda */
-            top: 10px;
+            top: 20px;
             left: 20px;
             background-color: #4CAF50; /* Cor de fundo verde */
             color: white; /* Cor do texto */
@@ -51,7 +51,7 @@
             text-align: center;
             background-color: rgba(255, 255, 255, 0.8); /* Fundo semi-transparente para o conteúdo */
             margin: 20px auto; /* Centraliza o conteúdo */
-            max-width: 400px; /* Largura máxima do conteúdo */
+            max-width: 600px; /* Largura máxima do conteúdo */
             border-radius: 10px; /* Bordas arredondadas */
         }
 
