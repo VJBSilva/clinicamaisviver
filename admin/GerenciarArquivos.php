@@ -32,9 +32,13 @@ if (!isset($_SESSION['usuario'])) {
         header {
             background-color: rgba(51, 51, 51, 0.8);
             color: #fff;
-            padding: 10px 0;
+            padding: 70px 0 20px; /* Ajuste o padding-top para 70px */
             text-align: center;
             position: relative;
+        }
+
+        header h1 {
+            margin: 0; /* Remove margens padrão */
         }
 
         main {
@@ -95,9 +99,9 @@ if (!isset($_SESSION['usuario'])) {
             transition: background-color 0.3s;
         }
 
-            button:hover {
-                background-color: #555;
-            }
+        button:hover {
+            background-color: #555;
+        }
 
         .alert {
             margin-top: 20px;
@@ -117,6 +121,22 @@ if (!isset($_SESSION['usuario'])) {
             border: 1px solid #f5c6cb;
         }
 
+        .btn-inicio {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .btn-inicio:hover {
+            background-color: #45a049;
+        }
+
         .logout-button {
             position: absolute;
             top: 10px;
@@ -124,18 +144,20 @@ if (!isset($_SESSION['usuario'])) {
             background-color: #dc3545;
         }
 
-            .logout-button:hover {
-                background-color: #c82333;
-            }
+        .logout-button:hover {
+            background-color: #c82333;
+        }
     </style>
 </head>
 <body>
     <header>
+        <!-- Botão de Início -->
+        <a href="/" class="btn-inicio">Início</a>
         <h1>Gerenciar Arquivos</h1>
         <!-- Botão de Sair -->
         <form method="post" action="admin.php?action=logout" onsubmit="return confirm('Tem certeza que deseja sair?');">
-    <button type="submit" class="btn logout-button">Sair</button>
-</form>
+            <button type="submit" class="btn logout-button">Sair</button>
+        </form>
     </header>
     <main>
         <!-- Formulário de Upload de Arquivos -->
@@ -146,7 +168,7 @@ if (!isset($_SESSION['usuario'])) {
             </div>
             <div class="form-group">
                 <label for="pedido">Pedido:</label>
-                <input type="text" id="pedido" name="pedido" class="form-control" required />
+                <input type="text" id="pedido" name="pedido" class="form-control" inputmode="numeric" required />
             </div>
             <div class="form-group">
                 <label for="arquivo">Selecione um arquivo para upload:</label>
@@ -167,6 +189,12 @@ if (!isset($_SESSION['usuario'])) {
     </footer>
 
     <script>
+        // Validar campo "Pedido" para aceitar apenas números
+        document.getElementById('pedido').addEventListener('input', function (e) {
+            e.target.value = e.target.value.replace(/\D/g, ''); // Remove tudo que não for número
+        });
+
+        // Validação do CPF (mantido do código anterior)
         document.getElementById('cpf').addEventListener('input', function (e) {
             var x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,3})(\d{0,2})/);
             e.target.value = !x[2] ? x[1] : x[1] + '.' + x[2] + (x[3] ? '.' + x[3] : '') + (x[4] ? '-' + x[4] : '');
