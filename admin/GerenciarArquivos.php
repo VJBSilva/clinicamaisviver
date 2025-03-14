@@ -157,19 +157,19 @@
 </head>
 <body>
     <header>
-        <!-- Botão de Início -->
-        <a href="/" class="btn-inicio">Início</a>
+    <!-- Botão de Início -->
+    <a href="/" class="btn-inicio">Início</a>
 
-        <!-- Botão PDF -->
-        <a href="gerenciarpdf.php" class="btn-pdf">PDF</a>
+    <!-- Botão PDF -->
+    <a href="GerenciarPDF.php" class="btn-pdf">PDF</a>
 
-        <!-- Botão de Sair -->
-        <form method="post" action="admin.php?action=logout" onsubmit="return confirm('Tem certeza que deseja sair?');">
-            <button type="submit" class="btn logout-button">Sair</button>
-        </form>
+    <!-- Botão de Sair -->
+    <form method="post" action="admin.php?action=logout" onsubmit="return confirm('Tem certeza que deseja sair?');">
+        <button type="submit" class="btn logout-button">Sair</button>
+    </form>
 
-        <h1>Gerenciar Arquivos</h1>
-    </header>
+    <h1>Gerenciar Arquivos</h1>
+</header>
     <main>
         <!-- Formulário de Upload de Arquivos -->
         <form method="post" action="admin.php?action=uploadArquivo" enctype="multipart/form-data">
