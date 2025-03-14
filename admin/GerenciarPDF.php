@@ -1,13 +1,14 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+// Removendo a verificação de sessão
+// if (session_status() == PHP_SESSION_NONE) {
+//     session_start();
+// }
 
-// Verifica se o usuário está logado
-if (!isset($_SESSION['usuario'])) {
-    header('Location: AccessDenied.php');
-    exit;
-}
+// Verificação de sessão removida
+// if (!isset($_SESSION['usuario'])) {
+//     header('Location: AccessDenied.php');
+//     exit;
+// }
 
 // Diretório onde os arquivos PDF estão salvos
 $diretorio = 'uploads/';
@@ -119,15 +120,21 @@ $arquivos = array_filter(scandir($diretorio), function ($arquivo) {
             background-color: #45a049;
         }
 
-        .logout-button {
+        .btn-sair {
             position: absolute;
             top: 10px;
             right: 10px;
-            background-color: #dc3545;
+            background-color: #dc3545; /* Vermelho do botão Excluir */
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
         }
 
-        .logout-button:hover {
-            background-color: #c82333;
+        .btn-sair:hover {
+            background-color: #c82333; /* Vermelho mais escuro ao passar o mouse */
         }
 
         .alert {
@@ -153,11 +160,12 @@ $arquivos = array_filter(scandir($diretorio), function ($arquivo) {
     <header>
         <!-- Botão de Início -->
         <a href="/" class="btn-inicio">Início</a>
+
+        <!-- Título da Página -->
         <h1>Gerenciar Arquivos PDF</h1>
+
         <!-- Botão de Sair -->
-        <form method="post" action="admin.php?action=logout" onsubmit="return confirm('Tem certeza que deseja sair?');">
-            <button type="submit" class="btn logout-button">Sair</button>
-        </form>
+        <a href="admin.php?action=logout" class="btn-sair" onclick="return confirm('Tem certeza que deseja sair?');">Sair</a>
     </header>
     <main>
         <!-- Exibir Mensagens de Sucesso ou Erro -->
