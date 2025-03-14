@@ -1,15 +1,3 @@
-<?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-
-// Verifica se o usuário está logado
-if (!isset($_SESSION['usuario'])) {
-    header('Location: AccessDenied.php');
-    exit;
-}
-?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -147,17 +135,40 @@ if (!isset($_SESSION['usuario'])) {
         .logout-button:hover {
             background-color: #c82333;
         }
+
+        .btn-pdf {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #007bff; /* Cor azul */
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .btn-pdf:hover {
+            background-color: #0056b3; /* Cor azul mais escura ao passar o mouse */
+        }
     </style>
 </head>
 <body>
     <header>
         <!-- Botão de Início -->
         <a href="/" class="btn-inicio">Início</a>
-        <h1>Gerenciar Arquivos</h1>
+
+        <!-- Botão PDF -->
+        <a href="gerenciarpdf.php" class="btn-pdf">PDF</a>
+
         <!-- Botão de Sair -->
         <form method="post" action="admin.php?action=logout" onsubmit="return confirm('Tem certeza que deseja sair?');">
             <button type="submit" class="btn logout-button">Sair</button>
         </form>
+
+        <h1>Gerenciar Arquivos</h1>
     </header>
     <main>
         <!-- Formulário de Upload de Arquivos -->
