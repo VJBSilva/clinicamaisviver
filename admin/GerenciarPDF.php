@@ -3,6 +3,17 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+// Inicia a sessão
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Verifica se o usuário está logado
+if (!isset($_SESSION['usuario'])) {
+    header('Location: AccessDenied.php');
+    exit;
+}
+
 // Caminho para a pasta uploads (usando caminho relativo corrigido)
 $diretorio = '../uploads/';
 
