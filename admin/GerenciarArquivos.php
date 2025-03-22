@@ -153,6 +153,22 @@
         .btn-pdf:hover {
             background-color: #0056b3; /* Cor azul mais escura ao passar o mouse */
         }
+        .btn-download {
+    position: absolute;
+    top: 10px;
+    left: 200px; /* Ajuste a posição conforme necessário */
+    background-color: #28a745; /* Cor verde */
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-download:hover {
+    background-color: #218838; /* Cor verde mais escura ao passar o mouse */
+}
     </style>
 </head>
 <body>
@@ -162,6 +178,9 @@
 
     <!-- Botão PDF -->
     <a href="GerenciarPDF.php" class="btn-pdf">PDF</a>
+
+    <!-- Botão para baixar todos os arquivos -->
+    <a href="download_all.php" class="btn-download">Baixar Todos os Arquivos</a>
 
     <!-- Botão de Sair -->
     <form method="post" action="admin.php?action=logout" onsubmit="return confirm('Tem certeza que deseja sair?');">
