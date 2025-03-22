@@ -1,14 +1,14 @@
 <?php
-// Nome do arquivo ZIP que será gerado
-$zipFileName = 'uploads.zip';
-
-// Caminho da pasta que contém os arquivos
-$folderPath = 'uploads/';
+// Caminho relativo para a pasta uploads a partir do local do script
+$folderPath = '../uploads/'; // Volta um nível e acessa a pasta uploads
 
 // Verifica se a pasta existe
 if (!is_dir($folderPath)) {
     die("A pasta 'uploads' não existe.");
 }
+
+// Nome do arquivo ZIP que será gerado
+$zipFileName = 'backup_uploads.zip';
 
 // Inicializa o objeto ZipArchive
 $zip = new ZipArchive();
