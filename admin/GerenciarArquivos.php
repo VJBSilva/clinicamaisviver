@@ -1,3 +1,17 @@
+<?php
+session_start(); // Inicia a sessão
+
+// Verifica se o usuário está logado
+if (!isset($_SESSION['usuario'])) {
+    header('Location: PainelDeControle.php'); // Redireciona para a página de login
+    exit; // Interrompe a execução do script
+}
+
+// Verifica se há mensagens para exibir
+$mensagem = $_SESSION['mensagem'] ?? '';
+unset($_SESSION['mensagem']); // Remove a mensagem da sessão após exibi-la
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -153,42 +167,43 @@
         .btn-pdf:hover {
             background-color: #0056b3; /* Cor azul mais escura ao passar o mouse */
         }
-        .btn-download {
-    position: absolute;
-    top: 10px;
-    left: 200px; /* Ajuste a posição conforme necessário */
-    background-color: #28a745; /* Cor verde */
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-}
 
-.btn-download:hover {
-    background-color: #218838; /* Cor verde mais escura ao passar o mouse */
-}
+        .btn-download {
+            position: absolute;
+            top: 10px;
+            left: 200px; /* Ajuste a posição conforme necessário */
+            background-color: #28a745; /* Cor verde */
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .btn-download:hover {
+            background-color: #218838; /* Cor verde mais escura ao passar o mouse */
+        }
     </style>
 </head>
 <body>
     <header>
-    <!-- Botão de Início -->
-    <a href="/" class="btn-inicio">Início</a>
+        <!-- Botão de Início -->
+        <a href="/" class="btn-inicio">Início</a>
 
-    <!-- Botão PDF -->
-    <a href="GerenciarPDF.php" class="btn-pdf">PDF</a>
+        <!-- Botão PDF -->
+        <a href="GerenciarPDF.php" class="btn-pdf">PDF</a>
 
-    <!-- Botão para baixar todos os arquivos -->
-    <a href="download_all.php" class="btn-download">Baixar Todos os Arquivos</a>
+        <!-- Botão para baixar todos os arquivos -->
+        <a href="download_all.php" class="btn-download">Baixar Todos os Arquivos</a>
 
-    <!-- Botão de Sair -->
-    <form method="post" action="admin.php?action=logout" onsubmit="return confirm('Tem certeza que deseja sair?');">
-        <button type="submit" class="btn logout-button">Sair</button>
-    </form>
+        <!-- Botão de Sair -->
+        <form method="post" action="admin.php?action=logout" onsubmit="return confirm('Tem certeza que deseja sair?');">
+            <button type="submit" class="btn logout-button">Sair</button>
+        </form>
 
-    <h1>Gerenciar Arquivos</h1>
-</header>
+        <h1>Gerenciar Arquivos</h1>
+    </header>
     <main>
         <!-- Formulário de Upload de Arquivos -->
         <form method="post" action="admin.php?action=uploadArquivo" enctype="multipart/form-data">
@@ -210,7 +225,7 @@
         <!-- Exibir Mensagens de Sucesso ou Erro -->
         <?php if (!empty($mensagem)): ?>
             <div class="alert <?php echo strpos($mensagem, 'sucesso') !== false ? 'alert-success' : 'alert-danger'; ?> mt-3">
-                <?php echo $mensagem; ?>
+                <?php echo htmlspecialchars($mensagem); ?>
             </div>
         <?php endif; ?>
     </main>
