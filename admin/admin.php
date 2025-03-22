@@ -25,6 +25,7 @@ function painelDeControle() {
     }
 
     include __DIR__ . '/PainelDeControle.php';
+    include __DIR__ . '/GerenciarArquivos.php.php';
 }
 
 function logout() {
