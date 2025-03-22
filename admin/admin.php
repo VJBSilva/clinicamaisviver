@@ -7,31 +7,32 @@ function painelDeControle() {
         $senha = $_POST['senha'] ?? '';
 
         if (empty($usuario) || empty($senha)) {
-            $mensagem = "Usuário e senha são obrigatórios.";
-            include __DIR__ . '/PainelDeControle.php';
-            return;
+            $_SESSION['mensagem'] = "Usuário e senha são obrigatórios.";
+            header('Location: PainelDeControle.php');
+            exit;
         }
 
-        if ($usuario === 'admin' && $senha === 'senha123') {
+        // Exemplo de senha criptografada
+        $senhaHash = password_hash('senha123', PASSWORD_DEFAULT);
+
+        if ($usuario === 'admin' && password_verify($senha, $senhaHash)) {
             $_SESSION['usuario'] = $usuario;
             $_SESSION['role'] = 'Admin';
             header('Location: GerenciarArquivos.php');
             exit;
         } else {
-            $mensagem = "Usuário ou senha inválidos.";
-            include __DIR__ . '/PainelDeControle.php';
-            return;
+            $_SESSION['mensagem'] = "Usuário ou senha inválidos.";
+            header('Location: PainelDeControle.php');
+            exit;
         }
     }
 
     include __DIR__ . '/PainelDeControle.php';
-    include __DIR__ . '/GerenciarArquivos.php.php';
 }
 
 function logout() {
-    session_start(); // Inicia a sessão
-    session_destroy(); // Destrói a sessão
-    header('Location: PainelDeControle.php'); // Redireciona para a página de login
+    session_destroy();
+    header('Location: PainelDeControle.php');
     exit;
 }
 
@@ -51,23 +52,46 @@ function uploadArquivo() {
     }
 
     if (empty($_FILES['arquivo']['name'])) {
-        $mensagem = "Nenhum arquivo selecionado.";
-        include __DIR__ . '/GerenciarArquivos.php';
-        return;
+        $_SESSION['mensagem'] = "Nenhum arquivo selecionado.";
+        header('Location: GerenciarArquivos.php');
+        exit;
     }
 
     $cpf = str_replace(['.', '-'], '', $_POST['cpf']);
     $pedido = $_POST['pedido'];
-    $nomeArquivo = $cpf . '_' . $pedido . '.' . pathinfo($_FILES['arquivo']['name'], PATHINFO_EXTENSION);
+
+    if (!preg_match('/^\d{11}$/', $cpf)) {
+        $_SESSION['mensagem'] = "CPF inválido.";
+        header('Location: GerenciarArquivos.php');
+        exit;
+    }
+
+    if (!preg_match('/^\d+$/', $pedido)) {
+        $_SESSION['mensagem'] = "Número do pedido inválido.";
+        header('Location: GerenciarArquivos.php');
+        exit;
+    }
+
+    $extensoesPermitidas = ['pdf', 'jpg', 'png'];
+    $extensao = strtolower(pathinfo($_FILES['arquivo']['name'], PATHINFO_EXTENSION));
+
+    if (!in_array($extensao, $extensoesPermitidas)) {
+        $_SESSION['mensagem'] = "Tipo de arquivo não permitido.";
+        header('Location: GerenciarArquivos.php');
+        exit;
+    }
+
+    $nomeArquivo = $cpf . '_' . $pedido . '.' . $extensao;
     $caminho = __DIR__ . '/../uploads/' . $nomeArquivo;
 
     if (move_uploaded_file($_FILES['arquivo']['tmp_name'], $caminho)) {
-        $mensagem = "Arquivo $nomeArquivo enviado com sucesso.";
+        $_SESSION['mensagem'] = "Arquivo $nomeArquivo enviado com sucesso.";
     } else {
-        $mensagem = "Erro ao enviar o arquivo.";
+        $_SESSION['mensagem'] = "Erro ao enviar o arquivo.";
     }
 
-    include __DIR__ . '/GerenciarArquivos.php';
+    header('Location: GerenciarArquivos.php');
+    exit;
 }
 
 function accessDenied() {
